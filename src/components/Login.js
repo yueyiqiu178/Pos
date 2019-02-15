@@ -9,6 +9,8 @@ import cz from './img/cz.gif';
 import cza from './img/cza.gif';
 import czb from './img/czb.gif';
 
+import { Link } from 'react-router-dom';
+
 class Login extends React.Component {
 
     constructor() {
@@ -100,7 +102,8 @@ class Login extends React.Component {
           </center>
         </div>
         </div>
-
+        <Link to="/">Home</Link>
+        {children}
         </div>
         );
     }

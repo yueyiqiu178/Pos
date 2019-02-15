@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import * as serviceWorker from '../serviceWorker';
+import App from './components/App';
+import * as serviceWorker from './serviceWorker';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import Login from './Login';
+import Login from './components/Login';
 
 ReactDOM.render(<Login />, document.getElementById('root'));
 

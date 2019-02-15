@@ -1,0 +1,1 @@
+用react + redux + express + mongodb建立一個pos系統

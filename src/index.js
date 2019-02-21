@@ -4,16 +4,17 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Login from './components/Login';
-import APP from './components/App';
+import APP from './containers/App';
 import Menu from './components/Menu';
 
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import reducers from './reducers';
+import thunk from 'redux-thunk';
 
-import {
-    BrowserRouter as Router,
-    Route,
-    Link,
-    Switch
-  } from 'react-router-dom'
+
+import { Router, Route} from 'react-router';
+import { browserHistory} from 'react-router-dom';
 
 // ReactDOM.render(
 
@@ -29,18 +30,20 @@ import {
 
 // , document.getElementById('root'));
 
+const store = createStore(reducers, applyMiddleware(thunk));
+
 ReactDOM.render(
   <Provider store={store}>
       <Router history={browserHistory}>
-          <Route path="/" component={App}>
-              <IndexRoute component={Login}/>
-              <Route path="home" component={Home}/>
+          <Route path="/" component={APP}>
+              <Route exact component={Login}/>
+              {/* <Route path="home" component={Home}/>
               <Route path="login" component={Login}/>
-              <Route path="register" component={Register}/>
-              <Route path="wall/:username" component={Wall}/>
+              <Route path="register" component={Menu}/>
+              <Route path="wall/:username" component={Menu}/> */}
           </Route>
       </Router>
-  </Provider>, rootElement
+  </Provider>, document.getElementById('root')
 );
 
 

@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+
 import MyTop from './Top';
 
 import ddl from './img/ddl.gif';
@@ -13,8 +16,8 @@ import { Link } from 'react-router-dom';
 
 class Login extends React.Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = { 
           loginSrc: ddl,
           resetSrc: cz,
@@ -102,12 +105,11 @@ class Login extends React.Component {
           </center>
         </div>
         </div>
-        <Link to="/">Home</Link>
-        {children}
+
         </div>
         );
     }
 
 }
 
-export default Login;
+export default connect(null, null)(Login);

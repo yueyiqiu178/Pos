@@ -13,8 +13,8 @@ import reducers from './reducers';
 import thunk from 'redux-thunk';
 
 
-import { Router, Route} from 'react-router';
-import { browserHistory} from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
 
 // ReactDOM.render(
 
@@ -32,20 +32,34 @@ import { browserHistory} from 'react-router-dom';
 
 const store = createStore(reducers, applyMiddleware(thunk));
 
-ReactDOM.render(
-  <Provider store={store}>
-      <Router history={browserHistory}>
-          <Route path="/" component={APP}>
-              <Route exact component={Login}/>
-              {/* <Route path="home" component={Home}/>
-              <Route path="login" component={Login}/>
-              <Route path="register" component={Menu}/>
-              <Route path="wall/:username" component={Menu}/> */}
-          </Route>
-      </Router>
-  </Provider>, document.getElementById('root')
-);
+// ReactDOM.render(
+//   <Provider store={store}>
+//       <Router history={browserHistory}>
+//           <Route path="/" component={APP}>
+//               <Route exact component={Login}/>
+//               {/* <Route path="home" component={Home}/>
+//               <Route path="login" component={Login}/>
+//               <Route path="register" component={Menu}/>
+//               <Route path="wall/:username" component={Menu}/> */}
+//           </Route>
+//       </Router>
+//   </Provider>, document.getElementById('root')
+// );
 
+
+ReactDOM.render(
+<Provider store={store}>
+<BrowserRouter>
+<main>
+    <Switch>
+      <Route exact path='/' component={Login}/>
+      <Route path='/roster' component={Menu}/>
+    </Switch>
+  </main>
+</BrowserRouter>
+</Provider>
+,document.getElementById('root')
+);
 
 
 // If you want your app to work offline and load faster, you can change
